@@ -1,12 +1,12 @@
 let on_device_ready _ =
-  let status = Statusbar.statusbar () in
-  (*status##styleDefault;*)
-  (*status##styleLightContent;*)
-  (*status##styleBlackTranslucent;*)
-  (*status##styleBlackOpaque;*)
-  status##hide;
-  (*status##show;*)
-  (*status##backgroundColorByName (Js.string "red");*)
+  let status = Statusbar.t () in
+  (*status#style_default;*)
+  (*status#style_light_content;*)
+  (*status#style_black_translucent;*)
+  (*status#style_black_opaque;*)
+  (*status#hide;*)
+  (*status#show;*)
+  status#background_color_by_name "red";
   Js._false
 
 let _ =
