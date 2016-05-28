@@ -1,4 +1,4 @@
-let color = [|"red" ; "blue"|]
+let color = [|"red" ; "blue" ; "orange"|]
 let i = ref 0
 
 let on_device_ready () =
@@ -8,7 +8,7 @@ let on_device_ready () =
   in
   let on_vol_down () =
     t#background_color_by_name color.(!i);
-    ignore (i := (!i + 1) mod 2)
+    ignore (i := (!i + 1) mod (Array.length color))
   in
   Cordova.Event.add_event_listener
     Cordova.Event.Vol_up_button on_vol_up false;
