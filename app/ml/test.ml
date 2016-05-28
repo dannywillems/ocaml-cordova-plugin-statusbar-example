@@ -1,15 +1,19 @@
-let on_device_ready _ =
+let color = [|"red" ; "blue"|]
+let i = ref 0
+
+let on_device_ready () =
   let t = Cordova_statusbar.t () in
-  t#background_color_by_name "red";
-  (*status#style_default;*)
-  (*status#style_light_content;*)
-  (*status#style_black_translucent;*)
-  (*status#style_black_opaque;*)
-  (*status#hide;*)
-  (*status#show;*)
-  (*status#background_color_by_name "red";*)
-  Js._false
+  let on_vol_up () =
+    if t#is_visible then t#hide else t#show
+  in
+  let on_vol_down () =
+    t#background_color_by_name color.(!i);
+    ignore (i := (!i + 1) mod 2)
+  in
+  Cordova.Event.add_event_listener
+    Cordova.Event.Vol_up_button on_vol_up false;
+  Cordova.Event.add_event_listener
+    Cordova.Event.Vol_down_button on_vol_down false
 
 let _ =
-  Dom.addEventListener Dom_html.document (Dom.Event.make "deviceready")
-(Dom_html.handler on_device_ready) Js._false
+  Cordova.Event.device_ready on_device_ready;
