@@ -3,6 +3,8 @@
 This is an example of the binding to the *cordova-plugin-statusbar*. See the
 binding [here](https://github.com/dannywillems/ocaml-cordova-plugin-statusbar).
 
+![example.gif](res/output.gif)
+
 ## How to compile?
 
 1. Add the plugin list repository as a remote opam package provider with
