@@ -1,0 +1,7 @@
+S app/ml/*.ml
+
+PKG gen_js_api
+PKG cordova-plugin-statusbar
+PKG cordova
+PKG js_of_ocaml
+PKG jsoo_lib
